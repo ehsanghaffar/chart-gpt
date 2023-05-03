@@ -1,4 +1,3 @@
-
 # Chart GPT
 
 A platorm for generate chart with ChatGPT
