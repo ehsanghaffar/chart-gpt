@@ -2,6 +2,8 @@
 
 A platorm for generate chart with ChatGPT
 
+> 🛠️ ChatGPT Generator is under development.
+
 ## Features
 
 - Light/dark mode toggle
