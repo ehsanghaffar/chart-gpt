@@ -18,23 +18,7 @@ const App = (): JSX.Element => {
   return (
     <>
       <Header />
-      <div>
-        <select
-          className=" border rounded p-3 cursor-pointer"
-          //@ts-ignore
-          onChange={handleType}
-        >
-          <option>Change Chart Type</option>
-          {Object.keys(ChartType).map((key) => {
-            return (
-              <option key={key} value={key}>
-                {/* @ts-ignore */}
-                {ChartType[key].name}
-              </option>
-            );
-          })}
-        </select>
-      </div>
+      <div>CHART</div>
       <div className="flex flex-col">
         <div className=" flex-1 bg-white w-96 mt-10" ref={ref}>
           <Chart data={data} labels={labels} chartType={chartType} />
