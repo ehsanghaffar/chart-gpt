@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   Chart as ChartJS,
   ArcElement,
@@ -13,7 +12,7 @@ import {
   Filler,
 } from "chart.js";
 import { Doughnut, Pie, Line } from "react-chartjs-2";
-import { ChartType, TypeBar } from "src/types/ChartTypes";
+import { ChartProps, ChartType, TypeBar } from "src/types/ChartTypes";
 
 ChartJS.register(
   ArcElement,
@@ -27,13 +26,7 @@ ChartJS.register(
   Filler
 );
 
-interface chartProps {
-  data: number[];
-  labels: string[];
-  chartType: TypeBar;
-}
-
-const Chart = ({ data, labels, chartType }: chartProps) => {
+const Chart = ({ data, labels, chartType }: ChartProps) => {
   const dataChart = {
     labels,
     datasets: [
@@ -61,10 +54,16 @@ const Chart = ({ data, labels, chartType }: chartProps) => {
     ],
   };
 
-  if (chartType === "LINE") return <Line data={dataChart} />;
-  if (chartType === "BAR") return <Pie data={dataChart} />;
-  if (chartType === "DOUGHNUT") return <Doughnut data={dataChart} />;
-  return <div></div>;
+  switch (chartType) {
+    case "LINE":
+      return <Line data={dataChart} />;
+    case "BAR":
+      return <Pie data={dataChart} />;
+    case "DOUGHNUT":
+      return <Doughnut data={dataChart} />;
+    default:
+      return <div></div>;
+  }
 };
 
 export default Chart;

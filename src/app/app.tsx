@@ -1,16 +1,16 @@
 import Chart from "components/chart/Charts";
 import Header from "components/layouts/Header";
 import { useState, useRef } from "react";
-import { ChartType, TypeBar } from "src/types/ChartTypes";
+import { TypeBar } from "src/types/ChartTypes";
 import "../index.css";
-import Button from "components/atoms/button";
+import UserData from "components/UserData";
 
 const App = (): JSX.Element => {
   const [data, setData] = useState([100, 200, 300]);
   const [labels, setLabels] = useState(["A", "B", "C"]);
-  const [chartType, setChartType] = useState<TypeBar>("BAR");
+  const [chartType, setChartType] = useState<TypeBar>("LINE");
 
-  const handleType = (typeBar: TypeBar) => {
+  const ChangeType = (typeBar: TypeBar) => {
     setChartType(typeBar);
   };
 
@@ -18,10 +18,17 @@ const App = (): JSX.Element => {
   return (
     <>
       <Header />
-      <div>CHART</div>
+      <div className="w-full flex justify-center flex-col items-center my-5">
+        <div className="text-2xl font-mono text-slate-800">Chart GPT</div>
+      </div>
       <div className="flex flex-col">
-        <div className=" flex-1 bg-white w-96 mt-10" ref={ref}>
-          <Chart data={data} labels={labels} chartType={chartType} />
+        <div className="w-full flex justify-center flex-col items-center">
+          <UserData setData={setData} setLabels={setLabels} />
+        </div>
+        <div className="w-full flex justify-center flex-col items-center">
+          <div className=" flex-1 bg-white w-96 mt-10" ref={ref}>
+            <Chart data={data} labels={labels} chartType={chartType} />
+          </div>
         </div>
       </div>
     </>
